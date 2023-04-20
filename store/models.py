@@ -17,7 +17,7 @@ class Product(models.Model):
     brand = models.CharField(max_length=250, default='un-branded')
     description = models.TextField(blank=True)
     slug = models.SlugField(max_length=250)
-    # image = models.ImageField(upload_to=None)
+    image = models.ImageField(upload_to='images/', blank=True, null=True)
 
     def __str__(self):
         return self.title
