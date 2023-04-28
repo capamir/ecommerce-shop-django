@@ -18,10 +18,19 @@ class Product(models.Model):
     title = models.CharField(max_length=250, db_index=True)
     brand = models.CharField(max_length=250, default='un-branded')
     description = models.TextField(blank=True)
+    price = models.DecimalField(max_digits=4, decimal_places=2)
     slug = models.SlugField(max_length=250)
-    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    image = models.ImageField(upload_to='images/', default='default.jpg', blank=True, null=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 
     def __str__(self):
         return self.title
+    
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
     
