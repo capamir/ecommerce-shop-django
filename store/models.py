@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 import uuid
 
 # Create your models here.
@@ -11,6 +12,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse("category-filter", args=[self.slug])
     
 
 class Product(models.Model):
@@ -33,4 +37,7 @@ class Product(models.Model):
         except:
             url = ''
         return url
+    
+    def get_absolute_url(self):
+        return reverse("product-details", args=[self.slug])
     
