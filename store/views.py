@@ -29,7 +29,7 @@ class ProductDetailsView(DetailView):
 #         return render(request, self.template_name, context)
     
 class ListCategotyView(DetailView):
-    template_name = "store/list_categoty.html"
+    template_name = "store/list_category.html"
     model = Category
     context_object_name = 'category'
 

@@ -14,7 +14,7 @@ class Category(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse("category-filter", args=[self.slug])
+        return reverse("store:category-filter", args=[self.slug])
     
 
 class Product(models.Model):
@@ -39,5 +39,5 @@ class Product(models.Model):
         return url
     
     def get_absolute_url(self):
-        return reverse("product-details", args=[self.slug])
+        return reverse("store:product-details", args=[self.slug])
     
