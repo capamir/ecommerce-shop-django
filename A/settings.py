@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     # local apps
     'store.apps.StoreConfig',
     'accounts.apps.AccountsConfig',
-    'cart.apps.CartConfig',
+    'orders.apps.OrdersConfig',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +67,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 # updated
-                'store.context_processors.categories'
+                'store.context_processors.categories',
+                'orders.context_processors.cart'
             ],
         },
     },
