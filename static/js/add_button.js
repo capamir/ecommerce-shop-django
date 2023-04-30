@@ -7,11 +7,11 @@ $(document).on('click', '#add-button', function(e){
     $.ajax({
 
         type: 'POST',
-        url: '{% url "cart-add" %}',
+        url: '{% url "orders:cart-add" %}',
         data: {
 
             product_id: $('#add-button').val(),
-            product_quantity: $('#select option:selected').text(),
+            product_qty: $('#select option:selected').text(),
             csrfmiddlewaretoken: "{{csrf_token}}",
             action: 'post'
 

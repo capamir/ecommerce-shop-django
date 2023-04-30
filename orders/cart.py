@@ -12,3 +12,16 @@ class Cart():
         
         self.cart = cart
         
+    def add(self, product, qty):
+        product_id = product.id
+        if product_id not in self.cart:
+            self.cart[product_id] = {
+                'quantity': 0,
+                'price': product.price
+            }
+        self.cart[product_id]['quantity'] += qty
+        self.save()
+    
+    def save(self):
+        self.session.modified = True
+        
