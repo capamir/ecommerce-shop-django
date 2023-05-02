@@ -18,7 +18,7 @@ $(document).on('click', '#add-button', function(e){
         },
 
         success: function(json){
-            //console.log(json)
+            console.log(json)
             document.getElementById("cart-qty").textContent = json.qty
         },
 

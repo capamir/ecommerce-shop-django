@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from django.views.generic import TemplateView
+from django.http import JsonResponse
 
 from .cart import Cart
 from store.models import Product
@@ -9,17 +10,24 @@ from store.models import Product
 class CartSummaryView(TemplateView):
     template_name = 'orders/cart_summary.html'
 
-class CartAddView(View):
-    def setup(self, request, *args, **kwargs):
-        self.cart = Cart(request)
-        return super().setup(request, *args, **kwargs)
 
-    def post(self, request, *args, **kwargs):
-        product_id = request.POST.get('product_id')
+def cart_add(request):
+
+    cart = Cart(request)
+
+    if request.POST.get('action') == 'post':
+
+        product_id = int(request.POST.get('product_id'))
         product_qty = int(request.POST.get('product_qty')) 
         product = get_object_or_404(Product, pk=product_id)
-        self.cart.add(product, product_qty)
+        cart.add(product, product_qty)
 
+        response = JsonResponse({
+            'product': product.title,
+            'quantity': product_qty
+        })
+        
+    
         
 class CartDeleteView(View):
     pass
