@@ -17,15 +17,15 @@ def cart_add(request):
 
     if request.POST.get('action') == 'post':
 
-        product_id = int(request.POST.get('product_id'))
+        product_id = request.POST.get('product_id')
         product_qty = int(request.POST.get('product_qty')) 
         product = get_object_or_404(Product, pk=product_id)
         cart.add(product, product_qty)
 
         response = JsonResponse({
-            'product': product.title,
-            'quantity': product_qty
+            'qty': product_qty
         })
+        return response
         
     
         
