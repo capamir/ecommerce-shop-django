@@ -23,7 +23,7 @@ class CartAddView(View):
         self.cart.add(product, product_qty)
 
         response = JsonResponse({
-            'qty': product_qty
+            'qty': self.cart.__len__()
         })
         return response
     

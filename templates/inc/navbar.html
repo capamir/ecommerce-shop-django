@@ -60,7 +60,11 @@
                     <i class="fa fa-shopping-cart" aria-hidden="true"> </i>
                     
                     <div id="cart-qty" class="d-inline-flex">
+                        {% with cart|length as qty_amount %}
 
+                            {% if qty_amount > 0 %} {{qty_amount}} {% else %}{% endif %}
+
+                        {% endwith %}
                     </div>
                 </a>
             </li>
